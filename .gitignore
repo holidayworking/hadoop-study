@@ -1,5 +1,7 @@
 .classpath
 .project
 .settings/
+input
+inter
 output/
 target/
