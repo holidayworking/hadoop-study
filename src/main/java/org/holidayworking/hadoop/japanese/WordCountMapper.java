@@ -1,4 +1,4 @@
-package org.holidayworking.hadoop;
+package org.holidayworking.hadoop.japanese;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,7 +10,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.atilika.kuromoji.Token;
 import org.atilika.kuromoji.Tokenizer;
 
-class JapaneseWordCountMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
+class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {

@@ -1,4 +1,4 @@
-package org.holidayworking.hadoop;
+package org.holidayworking.hadoop.japanese;
 
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -10,7 +10,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class JapaneseWordCount extends Configured implements Tool {
+public class WordCount extends Configured implements Tool {
 
     @Override
     public int run(String[] args) throws Exception {
@@ -20,13 +20,13 @@ public class JapaneseWordCount extends Configured implements Tool {
         }
 
         Job job = new Job(getConf(), "JapaneseWordCount");
-        job.setJarByClass(JapaneseWordCount.class);
+        job.setJarByClass(WordCount.class);
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
-        job.setMapperClass(JapaneseWordCountMapper.class);
-        job.setReducerClass(JapaneseWordCountReducer.class);
+        job.setMapperClass(WordCountMapper.class);
+        job.setReducerClass(WordCountReducer.class);
 
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
@@ -38,7 +38,7 @@ public class JapaneseWordCount extends Configured implements Tool {
     }
 
     public static void main(String[] args) throws Exception {
-        System.exit(ToolRunner.run(new JapaneseWordCount(), args));
+        System.exit(ToolRunner.run(new WordCount(), args));
     }
 
 }
