@@ -10,6 +10,7 @@ public class InverseComparator extends WritableComparator {
         super(IntWritable.class, true);
     }
 
+    @SuppressWarnings("rawtypes")
     @Override
     public int compare(WritableComparable a, WritableComparable b) {
         return - super.compare(a, b);
